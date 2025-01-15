@@ -66,9 +66,9 @@ const mobileScreenShot = computed(() => {
 		}
 	} else {
 		if (colorMode.value === 'dark') {
-			return '/img/hero/misskey-mobile-dark.png';
+			return '/img/hero/'+locale.value+'/misskey-mobile-dark.png';
 		} else {
-			return '/img/hero/misskey-mobile-light.png';
+			return '/img/hero/'+locale.value+'/misskey-mobile-light.png';
 		}
 	}
 });

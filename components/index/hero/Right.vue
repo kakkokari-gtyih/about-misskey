@@ -30,6 +30,7 @@ import { uwu } from '@/assets/js/misc/uwu';
 const mounted = ref(false);
 
 const colorMode = useColorMode();
+const { locale, fallbackLocale } = useI18n();
 const screenshots = computed(() => {
     if (!mounted.value) {
         return {
@@ -53,13 +54,13 @@ const screenshots = computed(() => {
     }
     if (colorMode.value === 'dark') {
         return {
-            desktop: '/img/hero/misskey-dark.png',
-            mobile: '/img/hero/misskey-mobile-dark.png',
+            desktop: '/img/hero/'+locale.value+'/misskey-dark.png',
+            mobile: '/img/hero/'+locale.value+'/misskey-mobile-dark.png',
         };
     } else {
         return {
-            desktop: '/img/hero/misskey-light.png',
-            mobile: '/img/hero/misskey-mobile-light.png',
+            desktop: '/img/hero/'+locale.value+'/misskey-light.png',
+            mobile: '/img/hero/'+locale.value+'/misskey-mobile-light.png',
         };
     }
 });
