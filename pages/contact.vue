@@ -56,11 +56,11 @@
 <script setup lang="ts">
 import ExtIco from 'bi/box-arrow-up-right.svg';
 import CaretDownFillIco from 'bi/caret-down-fill.svg';
-import type { MiContactFaqParsedContent } from '~/types/content';
+import { localesContentIdentifiers } from '@/assets/data/locales';
 
 const { t, locale } = useI18n();
 const route = useRoute();
-const { data: faqs } = await useGAsyncData(`contactFaqs-${locale.value}`, () => queryContent<MiContactFaqParsedContent>(`/${locale.value === 'ja-ks' ? 'ja' : locale.value}/contact-faq`).find());
+const { data: faqs } = await useGAsyncData(`contactFaqs-${locale.value}`, () => queryCollection(`contactFaq__${locale.value === 'ja-ks' ? 'ja' : localesContentIdentifiers[locale.value]}`).all());
 
 route.meta.title = t('_contact.title');
 route.meta.description = t('_contact.description');

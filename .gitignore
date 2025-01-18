@@ -6,6 +6,9 @@
 .vercel
 dist
 
+# Nuxt Content
+.data
+
 # Node dependencies
 node_modules
 

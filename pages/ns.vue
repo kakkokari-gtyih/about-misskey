@@ -36,7 +36,7 @@ defineI18nRoute(false);
 
 const route = useRoute();
 
-const { data } = await useGAsyncData('global-ns', () => queryContent(`/ns`).findOne());
+const { data } = await useGAsyncData('global-ns', () => queryCollection('ns').first());
 
 if (!data.value) {
     throw createError({ statusCode: 404, statusMessage: 'page not found', fatal: true });

@@ -107,26 +107,24 @@ export default defineNuxtConfig({
 		},
 	},
 	content: {
-		markdown: {
-			remarkPlugins: ['misskey-hub-markdown-fixer'],
-		},
-		navigation: {
-			fields: [
-				'date',
-				'description',
-			]
-		},
-		highlight: {
-			theme: {
-				// Default theme (same as single string)
-				default: 'catppuccin-latte',
-				// Theme used if `html.dark`
-				dark: 'one-dark-pro',
+		build: {
+			markdown: {
+				remarkPlugins: {
+					'misskey-hub-markdown-fixer': {},
+				},
+				highlight: {
+					theme: {
+						// Default theme (same as single string)
+						default: 'catppuccin-latte',
+						// Theme used if `html.dark`
+						dark: 'one-dark-pro',
+					},
+					langs: [
+						'json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'mdc', 'md', 'yaml', 'jsx',
+						'ini', 'sql', 'yml', 'nginx', 'bash',
+					],
+				},	
 			},
-			langs: [
-				'json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'mdc', 'md', 'yaml', 'jsx',
-				'ini', 'sql', 'yml', 'nginx', 'bash',
-			],
 		},
 	},
 	i18n: {

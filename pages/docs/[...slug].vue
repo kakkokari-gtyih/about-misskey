@@ -71,7 +71,7 @@
 <script setup lang="ts">
 import AsideNavIco from 'bi/text-indent-left.svg';
 import ExtIco from 'bi/box-arrow-up-right.svg';
-import type { MiDocsParsedContent } from '@/types/content';
+import { localesContentIdentifiers } from '@/assets/data/locales';
 
 const isAsideNavOpen = useState<boolean>('miHub_docs_asideNav_openState', () => false);
 
@@ -92,7 +92,7 @@ useHead(() => locale.value === 'ja-ks' ? ({
 const route = useRoute();
 const slugs = (route.params.slug as string[]).filter((v) => v !== '');
 
-const { data } = await useGAsyncData(`docs-${locale.value}-${slugs.join('-')}`, () => queryContent<MiDocsParsedContent>(`/${locale.value === 'ja-ks' ? 'ja' : locale.value}/docs/${slugs.join('/')}`).findOne());
+const { data } = await useGAsyncData(`docs-${locale.value}-${slugs.join('-')}`, () => queryCollection(`docs__${locale.value === 'ja-ks' ? 'ja' : localesContentIdentifiers[locale.value]}`).path(slugs.join('/')).first());
 
 if (!data.value) {
     throw createError({ statusCode: 404, statusMessage: 'page not found', fatal: true });

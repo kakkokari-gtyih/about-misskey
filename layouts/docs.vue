@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { localesContentIdentifiers } from '@/assets/data/locales';
+
 const isNavOpen = ref<boolean>(false);
 const isAsideNavOpen = useState<boolean>('miHub_docs_asideNav_openState', () => false);
 
@@ -11,12 +13,12 @@ useHead({
 const { locale } = useI18n();
 const navigation = ref();
 const asideNavKey = ref(0);
-const { data } = await useGAsyncData(`navigation_${locale.value}`, () => fetchContentNavigation(queryContent(`/${locale.value === 'ja-ks' ? 'ja' : locale.value}/docs/`)));
+const { data } = await useGAsyncData(`navigation_${locale.value}`, () => queryCollectionNavigation(`docs__${locale.value === 'ja-ks' ? 'ja' : localesContentIdentifiers[locale.value]}`, ['title']));
 navigation.value = data.value;
 
 watch(locale, async (to) => {
     console.log('locale changed');
-    const { data } = await useGAsyncData(`navigation_${to}`, () => fetchContentNavigation(queryContent(`/${to === 'ja-ks' ? 'ja' : to}/docs/`)));
+    const { data } = await useGAsyncData(`navigation_${to}`, () => queryCollectionNavigation(`docs__${locale.value === 'ja-ks' ? 'ja' : localesContentIdentifiers[locale.value]}`, ['title']));
     navigation.value = data.value;
     asideNavKey.value++;
 });

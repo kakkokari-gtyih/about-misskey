@@ -1,4 +1,4 @@
-import type { NavItem } from '@nuxt/content';
+import type { ContentNavigationItem } from '@nuxt/content';
 import type { LocaleObject } from '@nuxtjs/i18n';
 import { parseURL } from 'ufo';
 
@@ -57,7 +57,7 @@ export function sanitizeInternalPath(path: string): string {
  * @param condition 深掘りを停止する条件
  * @returns 深掘りしたナビゲーションObject
  */
-export const findDeepObject = (obj: NavItem, condition: (v: NavItem) => boolean): NavItem | null => {
+export const findDeepObject = (obj: ContentNavigationItem, condition: (v: ContentNavigationItem) => boolean): ContentNavigationItem | null => {
 	if (condition(obj)) {
 		return obj;
 	}

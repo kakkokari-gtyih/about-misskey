@@ -20,8 +20,8 @@
                 <GNuxtLink
                     class="block p-4 rounded-lg border border-slate-200 dark:border-accent-900 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
                     v-for="item in data"
-                    :key="item._path"
-                    :to="localePath(item._path ?? '', 'ja')"
+                    :key="item.path"
+                    :to="localePath(item.path ?? '', 'ja')"
                 >
                     <h3 class="text-lg font-bold mb-2">{{ item.navTitle || item.title }}</h3>
                     <p class="text-sm">{{ item.date ? $d(new Date(item.date)) : '' }}</p>
@@ -38,7 +38,7 @@ const route = useRoute();
 const localeState = useState('miHub_blog_originalLocale', () => locale.value);
 localeState.value = locale.value;
 
-const { data } = await useGAsyncData('blog', () => queryContent('blog').only(['_path', 'navTitle', 'title', 'date']).sort({ date: -1 }).find());
+const { data } = await useGAsyncData('blog', () => queryCollection('blog').select('path', 'navTitle', 'title', 'date').order('date', 'DESC').all());
 const localePath = useGLocalePath();
 
 route.meta.title = t('_blog.title');

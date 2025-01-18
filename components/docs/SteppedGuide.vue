@@ -78,11 +78,11 @@
 </template>
 
 <script setup lang="ts">
-import type { MiDocsParsedContentSteppedGuide } from '@/types/content';
+import type { SteppedGuide } from '../../content.config';
 import ArrowLRIco from 'bi/arrow-left-right.svg';
 
 const props = defineProps<{
-    data: MiDocsParsedContentSteppedGuide;
+    data: SteppedGuide;
 }>();
 
 const route = useRoute();

@@ -7,11 +7,11 @@
             </GNuxtLink>
             <p class="text-center mb-4">{{ $t('_blog.title') }}</p>
             <h1 class="text-center font-bold text-2xl lg:text-3xl mb-4">{{ data?.title }}</h1>
-            <p class="text-center">{{ $d(new Date(data?.date)) }}</p>
+            <p class="text-center">{{ data?.date ? $d(new Date(data.date)) : '' }}</p>
         </div>
         <div class="bg-white dark:bg-slate-950 pb-12 lg:mt-12 pt-6 px-6">
             <div class="mx-auto container max-w-screen-md markdown-body">
-                <ContentRenderer :value="data" />
+                <ContentRenderer v-if="data" :value="data" />
             </div>
             <div class="text-center mt-6 lg:mt-12">
                 <GSocialShare
@@ -27,11 +27,10 @@
 
 <script setup lang="ts">
 import LeftIco from 'bi/arrow-left.svg';
-import { joinURL, parseURL, withQuery, cleanDoubleSlashes } from 'ufo';
+import { joinURL, parseURL, cleanDoubleSlashes } from 'ufo';
 import { isLocalPath } from '@/assets/js/misc';
 import { localePathRegex } from '@/assets/data/locales';
 import type { LocaleCodes } from '@/assets/data/locales';
-import type { MiBlogParsedContent } from '~/types/content';
 
 // 日本語でしか提供されない
 defineI18nRoute({
@@ -59,7 +58,9 @@ onBeforeRouteLeave((to) => {
 // ▲他言語からやってきたときに正しいパスに戻す▲
 
 const runtimeConfig = useRuntimeConfig();
-const { data } = await useGAsyncData(`blog-${route.params.slug}`, () => queryContent<MiBlogParsedContent>(`/blog/${route.params.slug}`).findOne());
+const slugString = Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug;
+console.log(slugString);
+const { data } = await useGAsyncData(`blog-${slugString}`, () => queryCollection('blog').path('/blog/' + slugString).first());
 
 if (!data.value) {
     throw createError({ statusCode: 404, statusMessage: 'page not found', fatal: true });
