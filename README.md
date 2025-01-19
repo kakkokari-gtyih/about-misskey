@@ -100,6 +100,8 @@ Google Apps Scriptで動作します。
 
 ## License
 
-GNU Affero General Public License v3.0
+GNU Affero General Public License v3.0 (for code)
+CC BY-SA 4.0 (for assets and docs)\
+See `LICENSE` file for details.
 
 (c) 2023-2025 syuilo, kakkokari-gtyih and Misskey Project
