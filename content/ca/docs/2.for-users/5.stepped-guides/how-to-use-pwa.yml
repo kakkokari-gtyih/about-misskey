@@ -1,0 +1,79 @@
+title: "Misskey Webをアプリ化して使う方法"
+description: "Misskey WebをPWAアプリ化する方法をご紹介します。スマートフォンでMisskeyを利用する際のおすすめの方法です。"
+#Do not translate any keys that includes underscore
+_TYPE_: "STEPPED_GUIDE"
+body: |
+  ここでは、Misskey WebをPWAアプリ化する方法をご紹介します。スマートフォンでMisskeyを利用する際のおすすめの方法です。
+
+  ## PWAとは？
+
+  PWAは、Progressive Web Appの略で、ウェブページをアプリのように扱うことができる技術です。Misskeyは、標準でPWAに対応しています。
+
+  ここでは、PWAの設定方法を端末のOS別に紹介しています。以下からお使いのOSを選んで進んでください！
+guides:
+  - 
+    _AUTOSELECT_TYPE_: "OS_ANDROID"
+    _LAYOUT_TYPE_: "IMAGE_PORTRAIT_FIXED"
+    title: "Android (Google Chrome)"
+    description: |
+      AndroidでPWAをお使いになる際は、Google Chromeがおすすめです。
+
+      ここでは、Google Chromeを使用した設定方法について解説します。
+    steps:
+      - 
+        title: "PWAにしたいMisskeyサーバーを開く"
+        image: "android/sp_0.png"
+        description: |
+          PWAとして端末にインストールしたいMisskeyサーバーにアクセスし、ログインしてください。
+      - 
+        title: "詳細設定メニューを開く"
+        image: "android/sp_1.png"
+        description: |
+          Misskeyサーバーの任意のページを開いたまま、右上にある「︙」ボタンをタップします。
+      - 
+        title: "「ホーム画面に追加」または「アプリをインストール」をタップ"
+        image: "android/sp_2.png"
+        description: |
+          メニュー内にある「ホーム画面に追加」もしくは「アプリをインストール」の項目をタップし、出てきたダイアログの指示に従ってください。
+      - 
+        title: "ホーム画面を確認する"
+        image: "android/sp_3.png"
+        description: |
+          しばらくすると、ホーム画面に、サーバーのアイコンもしくはMisskeyのアイコンが追加されます。
+
+          このアイコンをタップすることで、Misskeyはアプリモードで起動します。
+  - 
+    _AUTOSELECT_TYPE_: "OS_IOS"
+    _LAYOUT_TYPE_: "IMAGE_PORTRAIT_FIXED"
+    title: "iOS / iPadOS"
+    description: |
+      iOS または iPadOS でPWAをお使いになる際は、Safariをご利用ください。
+
+      開始する前に、お使いの端末に搭載されているOSが最新のものかどうかを確認してください。最新ではない場合は、[こちら](https://support.apple.com/ja-jp/ios/update)を参考にしてアップデートしてください。
+    steps:
+      - 
+        title: "PWAにしたいMisskeyサーバーを開く"
+        image: "ios/sp_0.png"
+        description: |
+          PWAとして端末にインストールしたいMisskeyサーバーにアクセスし、ログインしてください。
+      - 
+        title: "共有ボタンをタップして開く"
+        image: "ios/sp_1.png"
+        description: |
+          Misskeyサーバーの任意のページを開いたまま、メニューバーの共有ボタンをタップします。
+      - 
+        title: "「ホーム画面に追加」をタップ"
+        image: "ios/sp_2.png"
+        description: |
+          オプションのリストを下にスクロールしてから、「ホーム画面に追加」をタップします。
+
+          この後、通知の送信許可を求められることがありますので、画面の指示に従い、必要に応じて許可してください。
+
+          「ホーム画面に追加」が表示されない場合は、設定項目が非表示になっている可能性があります。表示するには、リストの一番下までスクロールし、「アクションを編集」から「ホーム画面に追加」の項目を追加してください。詳しくは[Appleのサポートページ](https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios)をご覧ください。
+      - 
+        title: "ホーム画面を確認する"
+        image: "ios/sp_3.png"
+        description: |
+          しばらくすると、ホーム画面に、サーバーのアイコンもしくはMisskeyのアイコンが追加されます。
+
+          このアイコンをタップすることで、Misskeyはアプリモードで起動します。

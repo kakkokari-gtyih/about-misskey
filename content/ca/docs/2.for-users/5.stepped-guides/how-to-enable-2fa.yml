@@ -1,0 +1,168 @@
+title: "2段階認証を設定する方法（ワンタイムパスワード）"
+description: "Misskeyのアカウントにワンタイムパスワードを設定してセキュリティを強化する方法を説明します。"
+#Do not translate any keys that includes underscore
+_TYPE_: "STEPPED_GUIDE"
+body: |
+  2段階認証を設定すると、アカウントへの侵入リスクを軽減し、セキュリティを強化できます。ここでは、ワンタイムパスワードの設定方法をご紹介します。
+guides:
+  - 
+    _AUTOSELECT_TYPE_: "HARD_SMARTPHONE"
+    _LAYOUT_TYPE_: "IMAGE_PORTRAIT_FIXED"
+    title: "スマートフォン"
+    steps:
+      - 
+        title: "2段階認証用アプリをダウンロード"
+        description: |
+          操作を始める前に、2段階認証用のワンタイムパスワードを生成するためのアプリをインストールしてください。以下にその例を示します：
+
+          - Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)
+          - FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)
+      - 
+        title: "設定を開く"
+        image: "sp/1.png"
+        description: |
+          Misskeyを開き、画面右下の「≡」ボタンをタップ、でてきたメニューの「設定」をタップします。
+      - 
+        title: "「セキュリティ」をタップ"
+        image: "sp/2.png"
+        description: |
+          設定カテゴリの中から「セキュリティ」を見つけてタップします。
+      - 
+        title: "「認証アプリの設定を開始」をタップ"
+        image: "sp/3.png"
+        description: |
+          「二要素認証」の中にある「認証アプリ」から、「認証アプリの設定を開始」をタップします。
+      - 
+        title: "パスワードを入力"
+        image: "sp/4.png"
+        description: |
+          セキュリティに関わる設定のため、確認のために、お使いのアカウントにログインする際に使用しているパスワードを入力します。
+      - 
+        title: "認証アプリの設定を開始する"
+        image: "sp/8.png"
+        description: |
+          2段階認証アプリを設定するためのコードが生成されます。以下のいずれかの方法で設定してください。
+
+          ### 今お使いの端末で二段階認証アプリを設定する場合
+
+          「アプリを起動」ボタンをタップします。このボタンがない場合は、**QRコードをタップするとアプリが起動します。**
+
+          :::tip
+
+          起動しない場合は、2段階認証用アプリが正しくインストールされているか確認してください。
+
+          :::
+
+          ### 別の端末にインストールされた2段階認証アプリを設定する場合
+
+          2段階認証アプリを開き、アプリの指示に従って、ワンタイムパスワードの新規登録を行います。この際に、画面に表示されているQRコードをスキャンしてください。
+      - 
+        title: "認証アプリで生成されたコードをコピーする"
+        image: "sp/9.png"
+        description: |
+          このあとのMisskey側でのセットアップで、認証アプリが正しく設定されていたかの確認のために、アプリで生成されたワンタイムパスワードを入力する手順があります。
+
+          アプリの指示に従い、ワンタイムパスワードを覚えておくか、コピーしておいてください。
+
+          :::warning
+
+          ワンタイムパスワードはすぐ（約30秒）失効します。ご注意ください。
+
+          :::
+      - 
+        title: "ワンタイムパスワードを入力する"
+        image: "sp/6.png"
+        description: |
+          さきほどのワンタイムパスワードを入力し、「続ける」をタップします。
+      - 
+        title: "バックアップコードをダウンロードする"
+        image: "sp/7.png"
+        description: |
+          **２段階認証の設定が完了しました。**
+
+          最後に、２段階認証が使えなくなった際に使用できる「バックアップコード」も生成されますので、必ずダウンロードしてから終了してください。
+
+          :::warning
+
+          バックアップコードは、ワンタイムパスワードが使用できなくなったときにアカウントにログインできる救済機能です。
+
+          このコードが無いとアカウントにログインすることができなくなるので、必ずダウンロードして安全な場所に保管しておいてください。
+
+          このコードは、これ以降 二度と表示されません。
+
+          :::
+  - 
+    _AUTOSELECT_TYPE_: "HARD_PC"
+    title: "PC"
+    steps:
+      - 
+        title: "2段階認証用アプリをダウンロード"
+        description: |
+          操作を始める前に、2段階認証用のワンタイムパスワードを生成するためのアプリをお使いのスマートフォンなどにインストールしてください。以下にその例を示します：
+
+          - Google Authenticator: [Google Play](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) [App Store](https://apps.apple.com/app/google-authenticator/id388497605)
+          - FreeOTP: [Google Play](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp) [App Store](https://apps.apple.com/app/freeotp-authenticator/id872559395)
+
+          :::tip
+
+          PC用のワンタイムパスワード生成ソフトもありますが、ポータビリティの観点からスマホ用のアプリをおすすめします。
+
+          :::
+      - 
+        title: "設定を開く"
+        image: "pc/8.png"
+        description: |
+          「設定」→「セキュリティ」と進み、「二要素認証」の中にある「認証アプリ」から、「認証アプリの設定を開始」をタップします。
+      - 
+        title: "パスワードを入力"
+        image: "pc/3.png"
+        description: |
+          セキュリティに関わる設定のため、確認のために、お使いのアカウントにログインする際に使用しているパスワードを入力します。
+      - 
+        title: "認証アプリの設定を開始する"
+        image: "pc/7.png"
+        description: |
+          2段階認証アプリを設定するためのコードが生成されます。以下のいずれかの方法で設定してください。
+
+          ### スマホの2段階認証アプリを設定する場合（推奨）
+
+          お使いのスマートフォンで2段階認証アプリを開き、アプリの指示に従って、ワンタイムパスワードの新規登録を行います。この際に、画面に表示されているQRコードをスキャンしてください。
+
+          ### PC上の2段階認証アプリを使用する場合
+
+          「アプリを起動」ボタンをタップします。このボタンがない場合は、QRコードをタップするとアプリが起動します。
+      - 
+        title: "認証アプリで生成されたコードをコピーする"
+        image: "sp/9.png"
+        description: |
+          このあとのMisskey側でのセットアップで、認証アプリが正しく設定されていたかの確認のために、アプリで生成されたワンタイムパスワードを入力する手順があります。
+
+          アプリの指示に従い、ワンタイムパスワードを覚えておくか、コピーしておいてください。
+
+          :::warning
+
+          ワンタイムパスワードはすぐ（約30秒）失効します。ご注意ください。
+
+          :::
+      - 
+        title: "ワンタイムパスワードを入力する"
+        image: "pc/5.png"
+        description: |
+          さきほどのワンタイムパスワードを入力し、「続ける」をタップします。
+      - 
+        title: "バックアップコードをダウンロードする"
+        image: "pc/6.png"
+        description: |
+          **２段階認証の設定が完了しました。**
+
+          最後に、２段階認証が使えなくなった際に使用できる「バックアップコード」も生成されますので、必ずダウンロードしてから終了してください。
+
+          :::warning
+
+          バックアップコードは、ワンタイムパスワードが使用できなくなったときにアカウントにログインできる救済機能です。
+
+          このコードが無いとアカウントにログインすることができなくなるので、必ずダウンロードして安全な場所に保管しておいてください。
+
+          このコードは、これ以降 二度と表示されません。
+
+          :::

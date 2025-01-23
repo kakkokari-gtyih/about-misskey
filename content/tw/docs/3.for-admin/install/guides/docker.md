@@ -8,17 +8,17 @@ description: 本指南介紹如何使用 Docker 安裝設置 Misskey。
 
 :::danger
 
-一度使用を始めたサーバーのドメイン・ホスト名では、データベースを作り直さないでください！
+一旦開始使用，請勿使用伺服器的域名以及主機名稱重新建立資料庫！
 
 :::
 
 :::tip{label='前提条件'}
 
-- DockerおよびDocker Composeがインストールされていること。
+- 必須安裝 Docker 和 Docker Compose。
 
 :::
 
-## リポジトリの取得
+## 取得 Misskey 原始碼
 
 ```sh
 git clone -b master https://github.com/misskey-dev/misskey.git
@@ -28,7 +28,7 @@ git checkout master
 
 ## 設定
 
-下記コマンドで、各種設定ファイルのサンプルをコピーします。
+使用以下命令複製各種設定檔的範例。
 
 ```sh
 cp .config/docker_example.yml .config/default.yml
@@ -36,23 +36,22 @@ cp .config/docker_example.env .config/docker.env
 cp ./compose_example.yml ./compose.yml
 ```
 
-`default.yml`と`docker.env`をファイル内の説明に従って編集してください。\
-\
-また、必要に応じて、`docker-compose.yml`を編集します。(ポートを変更したい場合など)
+按照檔案中的說明編輯 `default.yml` 和 `docker.env`。\
+如有必要，也請編輯 `compose.yml`。（例如，如果您想更改連接埠）
 
-## ビルドと初期化
+## 建構和初始化
 
-次のコマンドでMisskeyのビルドとデータベースの初期化を行います。
-これにはしばらく時間がかかります。
+使用以下命令建構 Misskey 並初始化資料庫。
+這需要一些時間。
 
 ```shell
 sudo docker compose build
 sudo docker compose run --rm web pnpm run init
 ```
 
-## 起動
+## 啟動
 
-お疲れ様でした。以下のコマンドでMisskeyを起動できます。
+辛苦了。可以使用以下指令啟動 Misskey。
 
 ```sh
 sudo docker compose up -d
@@ -60,11 +59,11 @@ sudo docker compose up -d
 
 GLHF✨
 
-## Misskeyのアップデート方法
+## 如何更新Miskey
 
 :::warning
 
-アップデートの際は必ず[リリースノート](https://github.com/misskey-dev/misskey/blob/master/CHANGELOG.md)を確認し、変更点や追加で必要になる作業の有無(ほとんどの場合ありません)を予め把握するようにしてください。
+在進行更新時，請務必確認[變更日誌](https://github.com/misskey-dev/misskey/blob/master/CHANGELOG.md)，預先了解變更和可能需要的作業（通常不需要）。
 
 :::
 
@@ -78,9 +77,9 @@ sudo docker compose build
 sudo docker compose stop && sudo docker compose up -d
 ```
 
-アップデート内容、およびデータベースの規模によっては時間がかかることがあります。
+根據更新內容和資料庫大小，可能需要一些時間。
 
-## cliコマンドを実行する方法
+## 如何執行 cli 命令
 
 ```sh
 sudo docker compose run --rm web node packages/backend/built/tools/foo bar
