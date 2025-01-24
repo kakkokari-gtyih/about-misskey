@@ -178,3 +178,42 @@ Source servers SHOULD NOT set properties in other way that differs in above desc
 Source servers SHOULD NOT set unknown properties except in the case of keeping backwards compatibility, because more property may be added in the future.
 
 Recipient servers SHOULD ignore unknown properties.
+
+## `_misskey_channel`
+
+- compact IRI: `misskey:_misskey_channel`
+- canonical IRI: `https://misskey-hub.net/ns#_misskey_channel`
+
+This property is used to express channels where `Note` object is originally posted, or to express a place where the channel is located in a `Application` object.
+This property may not exist because the Source server do not include property due to reasons, i.e. the server does not support this extension.
+
+If property exists, its value MUST conform to following definitions:
+
+### As in `Note` object
+This property has following known sub-properties. Each property MUST exist unless noted as *optional*.
+
+- `url`: An URL that refers original channel's top page. Example value: `https://misskey.example/channel/abcdefghijklmnopq`
+- `name`: A free-form channel's name. Example value: `Base Forum of example server`
+- `description`: A free-form channel's description. Example value: `This channel is used to request something to the admin.`
+- `isSensitive`: Indicates whether channel is marked as "sensitive". Value MUST be either `true` or `false`. Example value: `false`.
+  - If this property is true, Misskey treats effective Visibility of this Note as "Home", like "Send to Home" operation. This means every Viewer cannot chain (including Renote, Reply, and Quote) other Act as "Public" Visibility.
+- `follower`: **Reserved**. Any implementor MUST NOT contain this property. Recipient servers MUST ignore this properties if exist.
+
+Note: it does not contain a definition of `follower` because who followed the channel is invisible unless the Viewer is server admin. This is not a case if the Note is delivered to the remote.
+
+### As in `Application` object
+
+- `url`: An URL that refers original channel's top page. This MAY be different from `Application.url` because Application property wants to point the subject as "System User". Example value: `https://misskey.example/channel/abcdefghijklmnopq`
+- `isSensitive`: Indicates whether channel is marked as "sensitive". Value MUST be either `true` or `false`. Example value: `false`.
+  - If this property is true, Misskey treats effective "Visibility" of every notes from this channel as "Home", like "Silence" operation. This means every Viewer cannot chain (including Renote, Reply, and Quote) other Act as "Public" Visibility.
+
+#### Happened effect on suspend
+
+When a Recipient server suspends "System User" that has some `_misskey_channel` definition, it makes the Recipient server to reject every Notes from the channel.
+
+#### Happened effect on silence
+
+When a Recipient server silences "System User" that has some `_misskey_channel` definition, it makes the Recipient server to set effective "Visibility" to "Home" instead of "Public" until the REcipient server do un-silence.
+
+### Any other object
+No specified behavior is defined.
